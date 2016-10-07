@@ -19,13 +19,13 @@ app.use(express.static(__dirname+'/public'))
 
 app.get('/', function (req, res) {
   res.render('index',
-  { title : 'Welcome to Jade Website' }
+            { title : 'Dashboard' }
   )
 })
 
-app.get('/aboutjade', function (req, res) {
-  res.render('about',
-  { title : 'About Jade' }
+app.get('/Users', function (req, res) {
+  res.render('Users',
+        { title : 'Users' }
   )
 })
 /*
