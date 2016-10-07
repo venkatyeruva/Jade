@@ -1,0 +1,22 @@
+doctype
+html
+  head
+    title #{title} - My Site
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+  body
+    header
+    div.container
+      div.row
+         div.col-md-8
+            block content
+         div.col-md-4
+            block sidebar
+                h1 Qucik Links
+                ul
+                  li 
+                    a(href="http://google.com" target="_blank") Google
+                  li 
+                    a(href="http://microsoft.com" target="_blank") Micro Soft
+                  li 
+                    a(href="http://wellsfargo.com" target="_blank") Wells Fargo
+
