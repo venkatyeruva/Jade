@@ -1,0 +1,40 @@
+<table cellpadding="0" width="100%" class="table table-striped" cellspacing="0" border="0">
+  <tr>
+    <td>ID</td>
+    <td>Batch Name
+    <td>scheduledTime - jobIntervalTime </td>
+    <td>Last Job Started Time</td>
+    <td>Last Job Finished Time</td>
+    <td>Last Job Status</td>
+    <td>Job Started Time</td>
+    <td>Job Finished Time</td>
+    <td>Current Status</td>
+    <td>Action</td>
+  </tr>
+  {#details}
+  <tr>
+    <td>{ID}</td>
+    <td>{batchName}<br/>
+     <td> {scheduledTime} - {jobIntervalTime}</td>
+    {#executionDetails}
+    <td>{lastJobStartedTime}</td>
+    <td>{lastJobFinishedTime}</td>
+    <td>{lastJobStatus}</td>
+    <td>{jobStartedTime}</td>
+    <td>{jobFinishedTime}</td>
+     <td>{?currentStatus}{currentStatus}{:else}No Status Received{/currentStatus}</td>
+    {?currentStatus}{@select key=currentStatus} 
+      {@eq value="IN_PROGRESS"}<td class="warning"> <button type="button" data-job-name="{batchName}" data-job-cancel class="btn btn-danger">Cancel</button></td>{/eq} 
+      {@eq value="FATAL"} <td class="warning"> <button type="button" data-job-name="{batchName}" data-job-cancel class="btn btn-danger">Cancel</button></td>{/eq} 
+      {@eq value="FAILED"} <td class="warning"> <button type="button" data-job-name="{batchName}" data-job-start  class="btn btn-success">START</button></td>{/eq} 
+      {@eq value="CANCELED"} <td class="warning"> <button type="button" data-job-name="{batchName}" data-job-start  class="btn btn-success">START</button></td>{/eq} 
+      {@eq value="PROCESS"} <td class="warning"> <button type="button" data-job-name="{batchName}" data-job-cancel  class="btn btn-danger">Cancel</button></td>{/eq} 
+      {@eq value="SUCCESS"} <td class="success">{currentStatus}</td>{/eq} 
+      {@none}<td> <button type="button" data-job-start data-job-name="{batchName}" class="btn btn-success">START</button></td>{/none} {/select}
+      {:else}<td> <button type="button" data-job-start data-job-name="{batchName}" class="btn btn-success">START</button></td>{/currentStatus}
+    
+    {/executionDetails}
+  </tr>
+  {/details}
+
+</table>
